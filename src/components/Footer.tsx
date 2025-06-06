@@ -6,14 +6,22 @@ import EmailIcon from "@mui/icons-material/Email";
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
-      <Stack>
+    <Box
+      sx={{
+        display: "flex",
+        backgroundColor: "secondary.main",
+        color: "primary.contrastText",
+        padding: 2,
+        justifyContent: "center",
+      }}
+    >
+      <Stack spacing={1}>
         <Link
           href="https://www.linkedin.com/in/matthewtwind/"
           style={{
             textDecoration: "none",
             display: "flex",
-            alignItems: "left",
+            alignItems: "center",
           }}
         >
           <Image
@@ -31,7 +39,7 @@ export default function Footer() {
           style={{
             textDecoration: "none",
             display: "flex",
-            alignItems: "left",
+            alignItems: "center",
           }}
         >
           <Image
@@ -49,7 +57,7 @@ export default function Footer() {
           style={{
             textDecoration: "none",
             display: "flex",
-            alignItems: "left",
+            alignItems: "center",
           }}
         >
           <EmailIcon
@@ -60,6 +68,6 @@ export default function Footer() {
           <span style={{ marginLeft: "8px", color: "white" }}>Email</span>
         </Link>
       </Stack>
-    </div>
+    </Box>
   );
 }
