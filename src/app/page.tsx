@@ -1,17 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import ImageGrid from "@/components/home/ImageGrid";
 import Content from "@/components/home/Content";
-import {
-  Typography,
-  Container,
-  Box,
-  useTheme,
-  useMediaQuery,
-  Stack,
-  Divider,
-} from "@mui/material";
+import { useTheme, useMediaQuery, Divider } from "@mui/material";
 
 export default function Home() {
   const theme = useTheme();

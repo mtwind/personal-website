@@ -1,10 +1,8 @@
 "use client";
 
-import { Typography, Container, Box, useTheme, Stack } from "@mui/material";
+import { Typography, Container, Stack } from "@mui/material";
 
 export default function Content({ size = 0 }) {
-  const theme = useTheme();
-
   return (
     <>
       <Container

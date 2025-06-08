@@ -1,10 +1,5 @@
 "use client";
 
-import Head from "next/head";
-import styles from "@/styles/Home.module.css";
-import Link from "next/link";
-import Footer from "@/components/layout/Footer";
-import Navigation from "@/components/layout/Navigation";
 import { Typography, Container } from "@mui/material";
 import ImageGrid from "@/components/home/MatthewImageGrid";
 
