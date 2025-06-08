@@ -5,7 +5,7 @@ import "@/styles/global.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { AppThemeProvider } from "@/context/ThemeContextProvider";
-import { Box } from "@mui/material"; // <-- Import Box
+import { Box, Divider } from "@mui/material"; // <-- Import Box
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -41,11 +41,19 @@ export default function RootLayout({
               <Box
                 component="main"
                 sx={{
+                  bgcolor: "secondary.main",
                   flexGrow: 1,
                 }}
               >
                 {children}
               </Box>
+
+              <Divider
+                sx={{
+                  borderBottomWidth: 3, // thickness (e.g., 3px)
+                  borderColor: "primary.main", // color (use theme color or hex)
+                }}
+              />
 
               <Footer />
             </Box>

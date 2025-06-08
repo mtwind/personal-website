@@ -21,7 +21,7 @@ export default function Navigation() {
 
   return (
     <AppBar position="static" color="secondary" enableColorOnDark>
-      <Toolbar>
+      <Toolbar sx={{ backgroundColor: theme.palette.secondary.main }}>
         {/* 1. Theme toggle button is the very first item */}
         <IconButton
           sx={{ mr: 1 }} // Add a little margin to the right

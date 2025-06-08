@@ -34,7 +34,7 @@ let darkTheme = createTheme({
             main: grey[900], // The original dark color
         },
         background: {
-            default: grey[900],
+            default: grey[800],
             paper: '#1e1e1e', // A slightly lighter dark for surfaces
         }
     },
