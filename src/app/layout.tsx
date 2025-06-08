@@ -2,8 +2,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "@/styles/global.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
 import { AppThemeProvider } from "@/context/ThemeContextProvider";
 import { Box, Divider } from "@mui/material"; // <-- Import Box
 

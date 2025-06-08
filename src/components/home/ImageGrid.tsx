@@ -76,7 +76,6 @@ const ImageGrid: React.FC<ImageGridProps> = ({ size = 2 }) => {
     "/home/chelsea-logo.png",
   ];
 
-  // Initialize the grid with the correct set of images based on size
   const [current_images, setCurrentImages] = useState<string[]>(
     config.initialImages
   );
@@ -86,7 +85,6 @@ const ImageGrid: React.FC<ImageGridProps> = ({ size = 2 }) => {
     gridPositionIndex: 0,
   });
 
-  // This effect resets the grid and counters if the size prop changes
   useEffect(() => {
     setCurrentImages(config.initialImages);
     rotationCounters.current = { imageSourceIndex: 8, gridPositionIndex: 0 };
@@ -106,7 +104,6 @@ const ImageGrid: React.FC<ImageGridProps> = ({ size = 2 }) => {
         return newImages;
       });
 
-      // BUG FIX: The modulo now correctly uses the length of the specific rotation order array
       rotationCounters.current.gridPositionIndex =
         (currentGridIndex + 1) % config.rotationOrder.length;
       rotationCounters.current.imageSourceIndex =
@@ -121,27 +118,44 @@ const ImageGrid: React.FC<ImageGridProps> = ({ size = 2 }) => {
       maxWidth={false}
       disableGutters
       sx={{
+        // THE FIX IS HERE:
+        // We still take up the full viewport width...
         width: "100vw",
-        maxWidth: "100vw",
+        // ...but the content inside will be constrained and centered.
+        display: "flex",
+        justifyContent: "center",
         padding: 0,
         margin: 0,
         backgroundColor: "secondary.main",
-        border: 4,
-        borderColor: "primary.main",
       }}
     >
+      {/* This inner Box is now what gets the border and max-width */}
       <Box
         sx={{
-          display: "grid",
-          gap: 1,
           width: "100%",
-          // Apply grid styles dynamically based on the size prop
-          ...config.gridStyles,
+          // Set a maximum width. On screens wider than this, padding will appear.
+          maxWidth: "1600px",
+          border: {
+            // Apply side borders only, not top/bottom
+            xs: 0, // No border on mobile
+            md: `4px solid ${"primary.main"}`,
+          },
+          borderTop: 0,
+          borderBottom: 0,
         }}
       >
-        {current_images.map((src, idx) => (
-          <ImageBox key={idx} index={idx} src={src} />
-        ))}
+        <Box
+          sx={{
+            display: "grid",
+            gap: 1,
+            width: "100%",
+            ...config.gridStyles,
+          }}
+        >
+          {current_images.map((src, idx) => (
+            <ImageBox key={idx} index={idx} src={src} />
+          ))}
+        </Box>
       </Box>
     </Container>
   );

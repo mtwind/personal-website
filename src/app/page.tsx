@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import ImageGrid from "@/components/home/ImageGrid";
+import Content from "@/components/home/Content";
 import {
   Typography,
   Container,
@@ -9,6 +10,7 @@ import {
   useTheme,
   useMediaQuery,
   Stack,
+  Divider,
 } from "@mui/material";
 
 export default function Home() {
@@ -29,39 +31,29 @@ export default function Home() {
 
   return (
     <>
-      {/* We now render a single ImageGrid and pass the dynamic size prop */}
-      <ImageGrid size={size} />
-
-      {/* The rest of your page content remains the same */}
-      <Container
-        sx={{
-          padding: "2rem 1rem",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "1rem",
-        }}
-      >
-        <Stack
-          sx={{
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
+      {size === 0 ? (
+        <>
+          <Divider
             sx={{
-              fontWeight: "bold",
-              fontSize: 50,
+              borderBottomWidth: 3, // thickness (e.g., 3px)
+              borderColor: "primary.main", // color (use theme color or hex)
             }}
-          >
-            Matthew Wind
-          </Typography>
-
-          <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>
-            Software Engineering
-          </Typography>
-        </Stack>
-      </Container>
+          />
+          <Content size={size} />
+          <ImageGrid size={size} />
+        </>
+      ) : (
+        <>
+          <Divider
+            sx={{
+              borderBottomWidth: 3, // thickness (e.g., 3px)
+              borderColor: "primary.main", // color (use theme color or hex)
+            }}
+          />
+          <ImageGrid size={size} />
+          <Content size={size} />
+        </>
+      )}
     </>
   );
 }
