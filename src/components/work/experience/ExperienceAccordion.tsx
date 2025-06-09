@@ -1,24 +1,34 @@
 "use client";
 
-import React from "react";
-import Image from "next/image"; // 1. Make sure next/image is imported
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
-  AccordionSummary,
   AccordionDetails,
-  Typography,
+  AccordionSummary,
   Box,
   Stack,
+  Typography,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Image from "next/image";
+import React from "react";
 
-// Define the props the component will accept
+// A helper function to get the name of the tech from its image path
+const getTechNameFromPath = (path: string): string => {
+  try {
+    const fileName = path.split("/").pop() || "";
+    const techName = fileName.split(".")[0] || "";
+    return techName;
+  } catch {
+    return "Tech icon";
+  }
+};
+
 interface ExperienceAccordionProps {
   company: string;
   role: string;
   date: string;
   location: string;
-  techStack: string[]; // 2. Changed from React.ReactNode[] to string[]
+  techStack: string[];
   description: React.ReactNode;
   defaultExpanded?: boolean;
 }
@@ -58,15 +68,18 @@ const ExperienceAccordion: React.FC<ExperienceAccordionProps> = ({
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            gap: 0.5,
+            gap: 1, // Adjusted gap for better mobile spacing
           }}
         >
-          {/* Top Row: Company/Role on left, Date/Location on right */}
+          {/* Top Row: Stacks vertically on mobile */}
           <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
               width: "100%",
+              // THE FIX: Change flex direction on mobile screens
+              flexDirection: { xs: "column", sm: "row" },
+              gap: { xs: 1, sm: 0 }, // Add a gap when stacked vertically
             }}
           >
             <Box>
@@ -75,34 +88,43 @@ const ExperienceAccordion: React.FC<ExperienceAccordionProps> = ({
                 {role}
               </Typography>
             </Box>
-            <Box sx={{ textAlign: "right", flexShrink: 0, ml: 2 }}>
+            {/* THE FIX: Align text left and remove margin on mobile */}
+            <Box
+              sx={{
+                textAlign: { xs: "left", sm: "right" },
+                flexShrink: 0,
+                ml: { xs: 0, sm: 2 },
+              }}
+            >
               <Typography variant="body1">{date}</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="subtitle1" color="text.secondary">
                 {location}
               </Typography>
             </Box>
           </Box>
 
           {/* Bottom Row: Tech Stack Icons */}
-          <Box sx={{ pl: 0.5 }}>
-            <Stack direction="row" spacing={1.5}>
-              {/* 3. The .map function now renders an <Image> for each src string */}
-              {techStack.map((imageSrc) => (
-                <Image
-                  key={imageSrc}
-                  src={imageSrc}
-                  alt="Tech stack icon"
-                  width={24} // Set a consistent size
-                  height={24}
-                  style={{ objectFit: "contain" }} // Use 'contain' for logos
-                />
-              ))}
+          <Box sx={{ pl: { xs: 0, sm: 0.5 } }}>
+            <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1.5 }}>
+              {techStack.map((imageSrc) => {
+                const techName = getTechNameFromPath(imageSrc);
+                return (
+                  <Image
+                    key={imageSrc}
+                    src={imageSrc}
+                    alt={`${techName} logo`}
+                    title={techName}
+                    width={24}
+                    height={24}
+                    style={{ objectFit: "contain" }}
+                  />
+                );
+              })}
             </Stack>
           </Box>
         </Box>
       </AccordionSummary>
 
-      {/* This is the part that expands */}
       <AccordionDetails sx={{ borderTop: 1, borderColor: "divider" }}>
         <Box
           sx={{

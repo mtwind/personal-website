@@ -10,16 +10,38 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-// Define the props for this specific accordion
+const getTechNameFromPath = (path: string): string => {
+  try {
+    const fileName = path.split("/").pop() || "";
+    const techName = fileName.split(".")[0] || "";
+    return techName;
+  } catch {
+    return "Tech icon";
+  }
+};
+
+// Define a common style for the icon wrappers to reduce repetition
+const iconWrapperStyles = {
+  display: "flex",
+  alignItems: "center",
+  textDecoration: "none",
+  padding: "1px 4px", // Add some padding
+  borderRadius: "4px", // Add rounded corners
+  // Change background on hover for better user feedback
+  "&:hover": {
+    backgroundColor: "action.hover",
+  },
+};
 interface ProjectAccordionProps {
   projectName: string;
   githubLink: string;
-  organization?: string; // The '?' makes this prop optional
+  organization?: string;
   date: string;
-  techStack: React.ReactNode[];
+  techStack: string[];
   description: React.ReactNode;
   defaultExpanded?: boolean;
 }
@@ -33,19 +55,6 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
   description,
   defaultExpanded = false,
 }) => {
-  // Define a common style for the icon wrappers to reduce repetition
-  const iconWrapperStyles = {
-    display: "flex",
-    alignItems: "center",
-    textDecoration: "none",
-    padding: "1px 4px", // Add some padding
-    borderRadius: "4px", // Add rounded corners
-    // Change background on hover for better user feedback
-    "&:hover": {
-      backgroundColor: "action.hover",
-    },
-  };
-
   return (
     <Accordion
       defaultExpanded={defaultExpanded}
@@ -72,7 +81,6 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            // THE FIX: Reduced gap from 1 to 0.5 to decrease space
             gap: 0.5,
           }}
         >
@@ -83,9 +91,10 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
               justifyContent: "space-between",
               alignItems: "flex-start",
               width: "100%",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: { xs: 1, sm: 0 },
             }}
           >
-            {/* Left Side: Project Name and GitHub Link Icon */}
             <Stack direction="row" alignItems="center" spacing={0.25}>
               <Link href={githubLink} passHref>
                 <Box component="span" sx={iconWrapperStyles}>
@@ -97,8 +106,13 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
               </Link>
             </Stack>
 
-            {/* Right Side: Organization and Date */}
-            <Box sx={{ textAlign: "right", flexShrink: 0, ml: 2 }}>
+            <Box
+              sx={{
+                textAlign: { xs: "left", sm: "right" },
+                flexShrink: 0,
+                ml: { xs: 0, sm: 2 },
+              }}
+            >
               {organization && (
                 <Typography variant="body1">{organization}</Typography>
               )}
@@ -108,26 +122,27 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
             </Box>
           </Box>
 
-          {/* Bottom Row: Tech Stack Icons */}
-          <Box sx={{ pl: 0.5 }}>
-            <Stack direction="row" spacing={1.5}>
-              {techStack.map((IconComponent, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    color: "text.secondary",
-                  }}
-                >
-                  {IconComponent}
-                </Box>
-              ))}
+          {/* Bottom Row: Tech Stack Images */}
+          <Box sx={{ pl: { xs: 0, sm: 0.5 } }}>
+            <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1.5 }}>
+              {techStack.map((imageSrc) => {
+                const techName = getTechNameFromPath(imageSrc);
+                return (
+                  <Image
+                    key={imageSrc}
+                    src={imageSrc}
+                    alt={`${techName} logo`}
+                    title={techName}
+                    width={24}
+                    height={24}
+                    style={{ objectFit: "contain" }}
+                  />
+                );
+              })}
             </Stack>
           </Box>
         </Box>
       </AccordionSummary>
-
       <AccordionDetails sx={{ borderTop: 1, borderColor: "divider" }}>
         <Box
           sx={{
