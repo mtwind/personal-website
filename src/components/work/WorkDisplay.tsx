@@ -1,18 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Box,
-  Stack,
-  Tabs,
-  Tab,
-  Typography,
-  Container,
-  Paper,
-} from "@mui/material";
+import Education from "@/components/work/education/Coursework";
 import Experiences from "@/components/work/experience/Experiences";
 import Projects from "@/components/work/projects/Projects";
-import Education from "@/components/work/education/Coursework";
+import { Box, Container, Paper, Tab, Tabs } from "@mui/material";
+import React, { useState } from "react";
 
 // A helper component to create the content panel for each tab
 interface TabPanelProps {

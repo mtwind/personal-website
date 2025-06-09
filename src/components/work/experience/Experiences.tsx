@@ -1,22 +1,5 @@
-import React, { useState } from "react";
-import { Stack, Typography } from "@mui/material";
 import ExperienceAccordion from "@/components/work/experience/ExperienceAccordion";
-import {
-  SiReact,
-  SiC,
-  SiTypescript,
-  SiJavascript,
-  SiPython,
-  SiNextdotjs,
-  SiVercel,
-  SiDocker,
-  SiKotlin,
-  SiKubernetes,
-  SiDotnet,
-} from "react-icons/si";
-
-import { TbBrandCSharp } from "react-icons/tb";
-import { FaAws, FaJava } from "react-icons/fa";
+import { Stack } from "@mui/material";
 
 export default function Experiences() {
   return (
@@ -101,7 +84,7 @@ export default function Experiences() {
             <li>
               Provided comprehensive product management and feedback on design
               documents, backlogs, project charters, and sprint plans, ensuring
-              each team's project featured a well-defined architecture,
+              each team`&apos;`s project featured a well-defined architecture,
               realistic timelines, and manageable sprint cycles.
             </li>
           </ul>

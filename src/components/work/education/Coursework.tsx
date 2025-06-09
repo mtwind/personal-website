@@ -1,17 +1,5 @@
-import React, { useState } from "react";
-import { Stack, Typography } from "@mui/material";
 import CourseworkAccordion from "@/components/work/education/CourseworkAccordion";
-import {
-  SiReact,
-  SiNodedotjs,
-  SiTypescript,
-  SiPostgresql,
-  SiDocker,
-  SiNextdotjs,
-  SiMui,
-  SiPython,
-  SiCplusplus,
-} from "react-icons/si";
+import { Stack } from "@mui/material";
 
 export default function Education() {
   return (
@@ -19,10 +7,7 @@ export default function Education() {
       <CourseworkAccordion
         courseTitle="Data Structures & Algorithms"
         date="Fall 2023"
-        techStack={[
-          <SiPython size={24} title="Python" />,
-          <SiCplusplus size={24} title="C++" />,
-        ]}
+        techStack={[]}
         description={
           <ul>
             <li>
@@ -41,10 +26,7 @@ export default function Education() {
       <CourseworkAccordion
         courseTitle="Web Application Development"
         date="Spring 2024"
-        techStack={[
-          <SiReact size={24} title="React" />,
-          <SiNextdotjs size={24} title="Next.js" />,
-        ]}
+        techStack={[]}
         description="Learned about full-stack web development, including frontend component architecture with React, server-side rendering with Next.js, and REST API design."
       />
     </Stack>

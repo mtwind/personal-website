@@ -1,19 +1,17 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-  Box,
-  Stack,
-  IconButton,
-} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LinkIcon from "@mui/icons-material/Link";
-import { useTheme } from "@emotion/react";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Stack,
+  Typography,
+} from "@mui/material";
+import Link from "next/link";
+import React from "react";
 
 // Define the props for this specific accordion
 interface ProjectAccordionProps {
@@ -35,8 +33,6 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
   description,
   defaultExpanded = false,
 }) => {
-  const theme = useTheme();
-
   // Define a common style for the icon wrappers to reduce repetition
   const iconWrapperStyles = {
     display: "flex",

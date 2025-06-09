@@ -1,15 +1,5 @@
-import React, { useState } from "react";
-import { Stack, Typography } from "@mui/material";
 import ProjectAccordion from "@/components/work/projects/ProjectAccordion";
-import {
-  SiReact,
-  SiNodedotjs,
-  SiTypescript,
-  SiPostgresql,
-  SiDocker,
-  SiNextdotjs,
-  SiMui,
-} from "react-icons/si";
+import { Stack } from "@mui/material";
 
 export default function Projects() {
   return (
@@ -20,11 +10,7 @@ export default function Projects() {
         githubLink="https://github.com/mtwind/personal-website" // Replace with your actual repo link
         organization="Personal Project"
         date="2024 – Present"
-        techStack={[
-          <SiNextdotjs size={24} title="Next.js" />,
-          <SiMui size={24} title="Material-UI" />,
-          <SiTypescript size={24} title="TypeScript" />,
-        ]}
+        techStack={[]}
         description="The very website you are currently viewing. Built from the ground up using a modern tech stack to serve as a central hub for my work and skills."
         defaultExpanded={false}
       />
