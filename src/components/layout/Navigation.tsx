@@ -9,21 +9,19 @@ import {
   Box,
   Button,
   useTheme,
-  Popover, // 1. Import Popover instead of Dialog
+  Popover,
 } from "@mui/material";
 import { useThemeToggle } from "@/context/ThemeContextProvider";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import Contact from "@/components/layout/Contact"; // 2. Import your new Contact component
+import Contact from "@/components/layout/Contact";
 
 export default function Navigation() {
   const theme = useTheme();
   const { toggleColorMode } = useThemeToggle();
 
-  // 3. State to manage the anchor element for the Popover
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-  // 4. Update click handler to set the anchor to the clicked button
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,7 +30,6 @@ export default function Navigation() {
     setAnchorEl(null);
   };
 
-  // Determine if the Popover should be open based on the anchorEl state
   const open = Boolean(anchorEl);
   const id = open ? "contact-popover" : undefined;
 
@@ -59,18 +56,16 @@ export default function Navigation() {
           About
         </Button>
         <Button component={Link} href="/work" color="inherit">
-          Projects
+          Work
         </Button>
 
         <Box sx={{ flexGrow: 1 }} />
 
-        {/* 5. The Contact button now opens the Popover */}
         <Button color="inherit" aria-describedby={id} onClick={handleClick}>
           Contact
         </Button>
       </Toolbar>
 
-      {/* 6. Replace Dialog with the Popover component */}
       <Popover
         id={id}
         open={open}

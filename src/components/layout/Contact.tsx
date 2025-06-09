@@ -79,14 +79,13 @@ export default function Contact({ popup = false }) {
         </Box>
       </Link>
       {popup && (
-        <Link href="tel:+1630520150" passHref>
-          <Box component="span" sx={iconWrapperStyles}>
-            <PhoneIcon sx={{ fontSize: 16, color: "text.secondary" }} />
-            <Typography sx={{ color: "text.primary", marginLeft: 1 }}>
-              (630) 520-150
-            </Typography>
-          </Box>
-        </Link>
+        <Box component="span" sx={iconWrapperStyles}>
+          {/* For MUI icons, we can set the color directly */}
+          <PhoneIcon sx={{ fontSize: 16, color: "text.secondary" }} />
+          <Typography sx={{ color: "text.primary", marginLeft: 1 }}>
+            (630) 520-150
+          </Typography>
+        </Box>
       )}
     </Stack>
   );
