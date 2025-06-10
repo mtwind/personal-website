@@ -14,20 +14,18 @@ export default function Experiences() {
           "/icons/TypeScript.png",
           "/icons/Kotlin.png",
           "/icons/aws.png",
+          "/icons/jira.png",
         ]}
         description={
           <ul>
             <li>
-              Developed and maintained an internal testing tool to complement
-              IDEs
-            </li>
-            <li>
-              Collaborated with a team of 5 engineers in an agile environment,
-              participating in daily stand-ups and sprint planning.
+              Developing an internal enterprise wide testing tool to automate
+              unit testing, component testing, and live dependency testing to
+              achieve 100% coverage.
             </li>
           </ul>
         }
-        defaultExpanded={false} // Make the first one open by default
+        defaultExpanded={false}
       />
 
       {/* Shopwave */}
@@ -41,7 +39,8 @@ export default function Experiences() {
           "/icons/TypeScript.png",
           "/icons/JavaScript.png",
           "/icons/Nextjs.png",
-          "/icons/Vercel.svg",
+          "/icons/MaterialUI.png",
+          "/icons/Vercel.png",
           "/icons/aws.png",
           "/icons/HTML5.png",
           "/icons/CSS3.png",

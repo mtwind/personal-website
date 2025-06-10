@@ -38,7 +38,7 @@ const iconWrapperStyles = {
 };
 interface ProjectAccordionProps {
   projectName: string;
-  githubLink: string;
+  githubLink?: string;
   organization?: string;
   date: string;
   techStack: string[];
@@ -96,21 +96,29 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
             }}
           >
             <Stack direction="row" alignItems="center" spacing={0.25}>
-              <Link href={githubLink} passHref>
+              {githubLink ? (
+                <Link href={githubLink} passHref>
+                  <Box component="span" sx={iconWrapperStyles}>
+                    <Typography variant="h6" sx={{ marginRight: 1 }}>
+                      {projectName}
+                    </Typography>
+                    <LinkIcon sx={{ fontSize: 16, color: "text.secondary" }} />
+                  </Box>
+                </Link>
+              ) : (
                 <Box component="span" sx={iconWrapperStyles}>
                   <Typography variant="h6" sx={{ marginRight: 1 }}>
                     {projectName}
                   </Typography>
-                  <LinkIcon sx={{ fontSize: 16, color: "text.secondary" }} />
                 </Box>
-              </Link>
+              )}
             </Stack>
 
             <Box
               sx={{
                 textAlign: { xs: "left", sm: "right" },
                 flexShrink: 0,
-                ml: { xs: 0, sm: 2 },
+                ml: { xs: 1, sm: 2 },
               }}
             >
               {organization && (
@@ -124,7 +132,10 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
 
           {/* Bottom Row: Tech Stack Images */}
           <Box sx={{ pl: { xs: 0, sm: 0.5 } }}>
-            <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1.5 }}>
+            <Stack
+              direction="row"
+              sx={{ flexWrap: "wrap", gap: 1.5, ml: { xs: 1, sm: 1 } }}
+            >
               {techStack.map((imageSrc) => {
                 const techName = getTechNameFromPath(imageSrc);
                 return (
