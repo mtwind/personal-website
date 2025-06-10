@@ -54,7 +54,7 @@ export default function Projects() {
 
       {/* BQFG Analyst Assignment */}
       <ProjectAccordion
-        projectName="Online Trading: Adaptive Algorithms"
+        projectName="ALgorithmic Trading Strategy"
         githubLink="https://github.com/mtwind/Analyst-Assignment"
         organization="Boiler Quant Finance Group"
         date="Oct 2024"
