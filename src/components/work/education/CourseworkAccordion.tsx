@@ -28,6 +28,7 @@ interface CourseworkAccordionProps {
   techStack: string[];
   description: React.ReactNode;
   defaultExpanded?: boolean;
+  organization?: string[];
 }
 
 const CourseworkAccordion: React.FC<CourseworkAccordionProps> = ({
@@ -36,6 +37,7 @@ const CourseworkAccordion: React.FC<CourseworkAccordionProps> = ({
   techStack,
   description,
   defaultExpanded = false,
+  organization = "Purdue University",
 }) => {
   return (
     <Accordion
@@ -87,9 +89,12 @@ const CourseworkAccordion: React.FC<CourseworkAccordionProps> = ({
             sx={{
               textAlign: { xs: "left", sm: "right" },
               flexShrink: 0,
-              ml: { xs: 0, sm: 2 },
+              ml: { xs: 1, sm: 2 },
             }}
           >
+            {organization && (
+              <Typography variant="body1">{organization}</Typography>
+            )}
             <Typography variant="body1" color="text.secondary">
               {date}
             </Typography>

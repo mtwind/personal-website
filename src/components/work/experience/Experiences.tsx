@@ -15,6 +15,7 @@ export default function Experiences() {
           "/icons/Kotlin.png",
           "/icons/aws.png",
           "/icons/jira.png",
+          "/icons/jest.png",
         ]}
         description={
           <ul>
@@ -98,7 +99,7 @@ export default function Experiences() {
         location="Chicago, IL"
         techStack={[
           "/icons/DotNet.png",
-          "/icons/Java.png",
+          "/icons/Java2.png",
           "/icons/C-Sharp.png",
           "/icons/docker.png",
           "/icons/Kubernetes-2.png",
@@ -138,7 +139,7 @@ export default function Experiences() {
           "/icons/C-Sharp.png",
           "/icons/CPlusPlus.png",
           "/icons/Python.png",
-          "/icons/Java.png",
+          "/icons/Java2.png",
           "/icons/JavaScript.png",
         ]}
         description={
