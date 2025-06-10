@@ -29,7 +29,6 @@ export default function Projects() {
         }
         defaultExpanded={false}
       />
-
       {/* BQFG Online Learning */}
       <ProjectAccordion
         projectName="Online Trading: Adaptive Algorithms"
@@ -51,7 +50,6 @@ export default function Projects() {
           </ul>
         }
       />
-
       {/* BQFG Analyst Assignment */}
       <ProjectAccordion
         projectName="Algorithmic Trading Strategy"
@@ -85,7 +83,6 @@ export default function Projects() {
           </ul>
         }
       />
-
       {/* Explorio */}
       <ProjectAccordion
         projectName="Explorio"
@@ -110,6 +107,30 @@ export default function Projects() {
               infrastructure, facilitating real-time access to an extensive
               range of travel options including flights, hotels, restaurants,
               and local experiences.
+            </li>
+          </ul>
+        }
+      />
+
+      {/* Explorio */}
+      <ProjectAccordion
+        projectName="Electric Vehicles: Charging and Perception"
+        // githubLink="https://github.com/PaigeLorenz/Explorio"
+        organization="Purdue Research"
+        date="Jan 2024 – May 2024"
+        techStack={["/icons/Python.png", "/icons/R.png"]}
+        description={
+          <ul>
+            <li>
+              Conducted analysis of large data sets on public perception of
+              electric vehicles (EV) using R and Python, specifically leveraging
+              R stats package, Pandas, SciPy, & NumPy to employ advanced data
+              modeling techniques and derive actionable insights.
+            </li>
+            <li>
+              Optimized resource distribution and supported EV adoption
+              initiatives through data driven solutions for $100 million of
+              funding.
             </li>
           </ul>
         }
@@ -143,7 +164,6 @@ export default function Projects() {
           </ul>
         }
       />
-
       {/* Java Marketplace */}
       <ProjectAccordion
         projectName="Java Marketplace"
