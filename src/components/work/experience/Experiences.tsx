@@ -97,11 +97,11 @@ export default function Experiences() {
         date="May 2024 – Aug 2024"
         location="Chicago, IL"
         techStack={[
-          "/icons/CSharp.png",
           "/icons/DotNet.png",
           "/icons/Java.png",
-          "/icons/Docker.png",
-          "/icons/Kubernetes.png",
+          "/icons/C-Sharp.png",
+          "/icons/docker.png",
+          "/icons/Kubernetes-2.png",
           "/icons/aws.png",
           "/icons/Azure.png",
         ]}
@@ -135,7 +135,7 @@ export default function Experiences() {
         date="Jan 2024 – Dec 2024"
         location="Remote"
         techStack={[
-          "/icons/CSharp.png",
+          "/icons/C-Sharp.png",
           "/icons/CPlusPlus.png",
           "/icons/Python.png",
           "/icons/Java.png",

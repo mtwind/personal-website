@@ -54,15 +54,11 @@ export default function Projects() {
 
       {/* BQFG Analyst Assignment */}
       <ProjectAccordion
-        projectName="ALgorithmic Trading Strategy"
+        projectName="Algorithmic Trading Strategy"
         githubLink="https://github.com/mtwind/Analyst-Assignment"
         organization="Boiler Quant Finance Group"
         date="Oct 2024"
-        techStack={[
-          "/icons/Python.png",
-          "/icons/NumPy.png",
-          "/icons/Pandas.png",
-        ]}
+        techStack={["/icons/Python.png", "/icons/NumPy.png"]}
         description={
           <ul>
             <li>
@@ -154,7 +150,7 @@ export default function Projects() {
         githubLink="https://github.com/mtwind/Project-5"
         organization="Purdue CS"
         date="Oct 2022 – Dec 2022"
-        techStack={["/icons/Java.png"]}
+        techStack={["/icons/Java2.png"]}
         description={
           <ul>
             <li>
