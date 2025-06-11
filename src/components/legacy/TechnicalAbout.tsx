@@ -11,6 +11,7 @@ export default function AboutPage() {
 
       {/* First MyInfo Component */}
       <MyInfo
+        id="backend-&-system-development"
         textPosition="left"
         images={["/icons/C3.png", "/icons/CPlusPlus.png", "/icons/Java2.png"]}
         description={
@@ -34,6 +35,7 @@ export default function AboutPage() {
 
       {/* Second MyInfo Component */}
       <MyInfo
+        id="mobile-&-full-stack"
         textPosition="right"
         images={[
           "/icons/Dart.png",
