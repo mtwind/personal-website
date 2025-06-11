@@ -6,6 +6,7 @@ export default function Experiences() {
     <Stack spacing={2}>
       {/* Capital One */}
       <ExperienceAccordion
+        id="experience-capital-one"
         company="Capital One"
         role="Software Engineer Intern"
         date="June 2025 – Aug 2025"
@@ -31,6 +32,7 @@ export default function Experiences() {
 
       {/* Shopwave */}
       <ExperienceAccordion
+        id="experience-shopwave"
         company="Shopwave"
         role="Software Engineering Intern"
         date="Jan 2025 – April 2025"
@@ -68,6 +70,7 @@ export default function Experiences() {
 
       {/* CS307 TA */}
       <ExperienceAccordion
+        id="experience-purdue-computer-science"
         company="Purdue Computer Science"
         role="Teaching Assistant: CS 307, Software Engineering I"
         date="Aug 2024 – December 2024"
@@ -93,6 +96,7 @@ export default function Experiences() {
 
       {/* FHLBC */}
       <ExperienceAccordion
+        id="experience-federal-home-loan-bank"
         company="Federal Home Loan Bank of Chicago"
         role="Software Engineering Intern"
         date="May 2024 – Aug 2024"
@@ -131,6 +135,7 @@ export default function Experiences() {
       />
 
       <ExperienceAccordion
+        id="experience-scale-ai"
         company="Scale AI"
         role="Software Engineer - AI Consultant"
         date="Jan 2024 – Dec 2024"

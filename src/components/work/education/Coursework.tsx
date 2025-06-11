@@ -5,6 +5,7 @@ export default function Education() {
   return (
     <Stack spacing={2}>
       <CourseworkAccordion
+        id="operating-systems"
         courseTitle="Operating Systems"
         date="Fall 2024"
         techStack={["/icons/C3.png", "/icons/CPlusPlus.png"]}
@@ -25,6 +26,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="software-engineering-1"
         courseTitle="Software Engineering I"
         date="Spring 2024"
         techStack={[
@@ -49,6 +51,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="systems-programming"
         courseTitle="Systems Programming"
         date="Spring 2024"
         techStack={["/icons/C3.png", "/icons/CPlusPlus.png"]}
@@ -68,6 +71,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="data-structures-&-algorithms"
         courseTitle="Data Structures & Algorithms"
         date="Fall 2023"
         techStack={["/icons/Java2.png"]}
@@ -88,6 +92,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="computer-architecture"
         courseTitle="Computer Architecture"
         date="Fall 2023"
         techStack={["/icons/C3.png", "/icons/CPlusPlus.png"]}
@@ -107,6 +112,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="discrete-math"
         courseTitle="Discrete Math"
         date="Spring 2023"
         techStack={[]}
@@ -126,6 +132,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="programming-in-C"
         courseTitle="Programming in C"
         date="Spring 2023"
         techStack={["/icons/C3.png"]}
@@ -146,6 +153,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="object-oriented-programming"
         courseTitle="Object-Oriented Programming"
         date="Fall 2022"
         techStack={["/icons/Java2.png"]}
@@ -165,6 +173,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="linear-algebra"
         courseTitle="Linear Algebra"
         date="Spring 2023"
         techStack={[]}
@@ -184,6 +193,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="multivariable-calculus"
         courseTitle="Multivariable Calculus"
         date="Spring 2023"
         techStack={[]}
@@ -203,6 +213,7 @@ export default function Education() {
       />
 
       <CourseworkAccordion
+        id="intro-to-statistics"
         courseTitle="Intro to Statistics"
         date="Fall 2023"
         techStack={["/icons/R.png"]}

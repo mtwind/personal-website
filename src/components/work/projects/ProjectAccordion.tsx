@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const getTechNameFromPath = (path: string): string => {
   try {
@@ -37,6 +37,7 @@ const iconWrapperStyles = {
   },
 };
 interface ProjectAccordionProps {
+  id: string;
   projectName: string;
   githubLink?: string;
   organization?: string;
@@ -47,6 +48,7 @@ interface ProjectAccordionProps {
 }
 
 const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
+  id,
   projectName,
   githubLink,
   organization,
@@ -55,22 +57,38 @@ const ProjectAccordion: React.FC<ProjectAccordionProps> = ({
   description,
   defaultExpanded = false,
 }) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === `#${id}`) {
+      setExpanded(true);
+      // Optional: scroll the element into view
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [id]);
+
   return (
     <Accordion
-      defaultExpanded={defaultExpanded}
-      sx={{ "&:before": { display: "none" } }}
-      elevation={2}
+      id={id}
+      expanded={expanded}
+      onChange={() => setExpanded(!expanded)}
+      elevation={expanded ? 6 : 2}
+      sx={{
+        "&:before": { display: "none" },
+        transition: "box-shadow 0.3s ease-in-out",
+      }}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
-        id="panel1a-header"
+        id={`${id}-header`}
         sx={{
-          "& .MuiAccordionSummary-content": {
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-          },
+          // THE FIX IS HERE:
+          backgroundColor: expanded ? "action.hover" : "transparent",
+          transition: "background-color 0.3s ease-in-out",
           "& .MuiAccordionSummary-expandIconWrapper": {
             alignSelf: "flex-end",
           },

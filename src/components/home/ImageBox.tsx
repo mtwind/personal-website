@@ -1,26 +1,31 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ImageBoxProps {
   index: number;
   src: string;
+  link?: string;
+  description?: string;
 }
 
-const ImageBox: React.FC<ImageBoxProps> = ({ index, src }) => {
-  const ANIMATION_DURATION = 700; // Animation speed in ms
-  const SLIDE_AMOUNT = "20px"; // How far the image slides
+const ImageBox: React.FC<ImageBoxProps> = ({
+  index,
+  src,
+  link,
+  description,
+}) => {
+  const ANIMATION_DURATION = 700;
+  const SLIDE_AMOUNT = "20px";
 
   const [displaySrc, setDisplaySrc] = useState<string>(src);
-
-  // The animation state now holds both opacity and transform properties
   const [animationStyles, setAnimationStyles] = useState({
     opacity: 1,
     transform: "translateX(0)",
   });
 
   const isInitialMount = useRef(true);
-  // Ref to hold timer IDs for proper cleanup
   const timers = useRef<NodeJS.Timeout[]>([]);
 
   useEffect(() => {
@@ -29,63 +34,56 @@ const ImageBox: React.FC<ImageBoxProps> = ({ index, src }) => {
       return;
     }
 
-    // 1. Start the fade-out: move current image to the left
     setAnimationStyles({
       opacity: 0,
       transform: `translateX(-${SLIDE_AMOUNT})`,
     });
 
-    // 2. Set a timer for when the fade-out is complete
     const fadeOutTimer = setTimeout(() => {
-      // 3. Swap the image source while it's invisible
       setDisplaySrc(src);
-
-      // 4. Reposition the new image to the right, ready to slide in
       setAnimationStyles({
         opacity: 0,
         transform: `translateX(${SLIDE_AMOUNT})`,
       });
 
-      // 5. Use a second, tiny timeout to allow the browser to apply the
-      //    repositioning before starting the fade-in animation.
       const fadeInTimer = setTimeout(() => {
-        // 6. Animate the new image in by moving it to the center
         setAnimationStyles({
           opacity: 1,
           transform: "translateX(0)",
         });
-      }, 20); // 20ms delay is enough
-
+      }, 20);
       timers.current.push(fadeInTimer);
     }, ANIMATION_DURATION);
-
     timers.current.push(fadeOutTimer);
 
-    // Cleanup function to clear all timers if the component unmounts
     return () => {
       timers.current.forEach((timerId) => clearTimeout(timerId));
       timers.current = [];
     };
   }, [src]);
 
-  return (
+  const imageContent = (
+    // This Box now acts as the relative container for the description overlay
     <Box
       sx={{
         width: "100%",
-        aspectRatio: "16 / 9",
+        height: "100%",
+        position: "relative",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "primary.main",
-        // Apply the animation state directly
-        opacity: animationStyles.opacity,
-        transform: animationStyles.transform,
-        // The transition now applies to both opacity and transform
-        transition: `opacity ${ANIMATION_DURATION}ms ease-in-out, transform ${ANIMATION_DURATION}ms ease-in-out`,
       }}
     >
       {displaySrc === "/matthew-wind.png" ? (
-        <Stack>
+        <Stack
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
           <Typography
             sx={{
               fontSize: 50,
@@ -96,7 +94,6 @@ const ImageBox: React.FC<ImageBoxProps> = ({ index, src }) => {
           >
             Matthew Wind
           </Typography>
-
           <Typography
             sx={{
               fontWeight: "bold",
@@ -122,6 +119,60 @@ const ImageBox: React.FC<ImageBoxProps> = ({ index, src }) => {
           }}
           sizes="(max-width: 600px) 100vw, 33vw"
         />
+      )}
+      {/* THE NEW DESCRIPTION OVERLAY */}
+      {description && (
+        <Box
+          className="description-overlay"
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.6)", // More translucent fill color
+            color: "primary.contrastText",
+            p: 1.5, // Padding for the text
+            opacity: 0, // Start invisible
+            transition: "opacity 0.3s ease-in-out",
+            pointerEvents: "none", // Ensures the overlay doesn't block clicks
+          }}
+        >
+          <Typography variant="body2" textAlign="center">
+            {description}
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        aspectRatio: "16 / 9",
+        position: "relative",
+        opacity: animationStyles.opacity,
+        transform: animationStyles.transform,
+        transition: `all 300ms ease-in-out`, // Shortened transition for hover
+        borderRadius: 1,
+        boxShadow: (theme) => theme.shadows[2],
+        cursor: link ? "pointer" : "default",
+        "&:hover": {
+          transform: `scale(1.03) translateY(-2px)`,
+          boxShadow: (theme) => theme.shadows[6],
+          zIndex: 1,
+          "& .description-overlay": {
+            opacity: 1, // Make the description visible on hover
+          },
+        },
+      }}
+    >
+      {link ? (
+        <Link href={link} passHref style={{ textDecoration: "none" }}>
+          {imageContent}
+        </Link>
+      ) : (
+        imageContent
       )}
     </Box>
   );

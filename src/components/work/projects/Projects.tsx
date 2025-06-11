@@ -6,6 +6,7 @@ export default function Projects() {
     <Stack spacing={2}>
       {/* Portfolio Website */}
       <ProjectAccordion
+        id="project-portfolio-website"
         projectName="Portfolio Website"
         githubLink="https://github.com/mtwind/personal-website" // Replace with your actual repo link
         organization="Personal Project"
@@ -31,6 +32,7 @@ export default function Projects() {
       />
       {/* BQFG Online Learning */}
       <ProjectAccordion
+        id="project-bqfg-online-learning"
         projectName="Online Trading: Adaptive Algorithms"
         githubLink="https://github.com/Boiler-Quant/bqfg-online-learning/tree/main" // Replace with your actual repo link
         organization="Boiler Quant Finance Group"
@@ -52,6 +54,7 @@ export default function Projects() {
       />
       {/* BQFG Analyst Assignment */}
       <ProjectAccordion
+        id="project-algorithmic-trading-strategy"
         projectName="Algorithmic Trading Strategy"
         githubLink="https://github.com/mtwind/Analyst-Assignment"
         organization="Boiler Quant Finance Group"
@@ -85,6 +88,7 @@ export default function Projects() {
       />
       {/* Explorio */}
       <ProjectAccordion
+        id="project-explorio"
         projectName="Explorio"
         // githubLink="https://github.com/PaigeLorenz/Explorio"
         organization="Purdue CS"
@@ -114,6 +118,7 @@ export default function Projects() {
 
       {/* Explorio */}
       <ProjectAccordion
+        id="project-electric-vehicles"
         projectName="Electric Vehicles: Charging and Perception"
         // githubLink="https://github.com/PaigeLorenz/Explorio"
         organization="Purdue Research"
@@ -138,6 +143,7 @@ export default function Projects() {
 
       {/* BoilerLiving */}
       <ProjectAccordion
+        id="project-boiler-living-x"
         projectName="Boiler Living X"
         githubLink="https://github.com/Andrewtho907/BoilerLiving-JS"
         organization="BoilerMake X Hackathon"
@@ -166,6 +172,7 @@ export default function Projects() {
       />
       {/* Java Marketplace */}
       <ProjectAccordion
+        id="project-java-marketplace"
         projectName="Java Marketplace"
         githubLink="https://github.com/mtwind/Project-5"
         organization="Purdue CS"

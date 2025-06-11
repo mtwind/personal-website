@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Box, Stack, Typography, useTheme } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Contact({ popup = false }) {
   const theme = useTheme();
@@ -21,8 +21,8 @@ export default function Contact({ popup = false }) {
       backgroundColor: "action.hover",
     },
     // Set the background color only in light mode
-    backgroundColor:
-      theme.palette.mode === "light" ? "action.selected" : "transparent",
+    // backgroundColor:
+    //   theme.palette.mode === "light" ? "action.selected" : "transparent",
   };
 
   return (

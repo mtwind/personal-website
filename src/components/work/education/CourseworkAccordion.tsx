@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const getTechNameFromPath = (path: string): string => {
   try {
@@ -23,6 +23,7 @@ const getTechNameFromPath = (path: string): string => {
 };
 
 interface CourseworkAccordionProps {
+  id: string;
   courseTitle: string;
   date: string;
   techStack: string[];
@@ -32,6 +33,7 @@ interface CourseworkAccordionProps {
 }
 
 const CourseworkAccordion: React.FC<CourseworkAccordionProps> = ({
+  id,
   courseTitle,
   date,
   techStack,
@@ -39,17 +41,35 @@ const CourseworkAccordion: React.FC<CourseworkAccordionProps> = ({
   defaultExpanded = false,
   organization = "Purdue University",
 }) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === `#${id}`) {
+      setExpanded(true);
+      // Optional: scroll the element into view
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [id]);
   return (
     <Accordion
-      defaultExpanded={defaultExpanded}
-      sx={{ "&:before": { display: "none" } }}
-      elevation={2}
+      id={id}
+      expanded={expanded}
+      onChange={() => setExpanded(!expanded)}
+      elevation={expanded ? 6 : 2}
+      sx={{
+        "&:before": { display: "none" },
+        transition: "box-shadow 0.3s ease-in-out",
+      }}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
-        id="panel1a-header"
+        id={`${id}-header`}
         sx={{
+          backgroundColor: expanded ? "action.hover" : "transparent",
+          transition: "background-color 0.3s ease-in-out",
           "& .MuiAccordionSummary-expandIconWrapper": {
             alignSelf: "flex-end",
           },

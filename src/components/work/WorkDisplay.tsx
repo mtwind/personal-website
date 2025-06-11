@@ -4,7 +4,7 @@ import Education from "@/components/work/education/Coursework";
 import Experiences from "@/components/work/experience/Experiences";
 import Projects from "@/components/work/projects/Projects";
 import { Box, Container, Paper, Tab, Tabs } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // A helper component to create the content panel for each tab
 interface TabPanelProps {
@@ -31,6 +31,19 @@ function TabPanel(props: TabPanelProps) {
 
 export default function WorkDisplay() {
   const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    // Get the hash from the URL (e.g., "#project-portfolio-website")
+    const hash = window.location.hash;
+
+    // Check the prefix of the hash to determine which tab to show
+    if (hash.startsWith("#project-")) {
+      setValue(1); // Index 1 is "Projects"
+    } else if (hash.startsWith("#coursework-")) {
+      setValue(2); // Index 2 is "Coursework"
+    }
+    // If it's "#experience-" or no hash, it will default to 0, which is correct.
+  }, []);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
