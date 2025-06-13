@@ -6,8 +6,8 @@ export default function Projects() {
     <Stack spacing={2}>
       {/*Figgie Bot */}
       <ProjectAccordion
-        id="figgie-bot"
-        projectName="Figgie Bot"
+        id="figgie-genius"
+        projectName="Figgie Genius"
         githubLink="https://github.com/mtwind/figgie"
         organization="Personal Project"
         date="June 2025 – Present"
