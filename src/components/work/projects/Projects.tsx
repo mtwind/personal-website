@@ -8,7 +8,7 @@ export default function Projects() {
       <ProjectAccordion
         id="figgie-genius"
         projectName="Figgie Genius"
-        githubLink="https://github.com/mtwind/figgie"
+        githubLink="https://github.com/mtwind/figgie-genius"
         organization="Personal Project"
         date="June 2025 – Present"
         techStack={[
