@@ -1,9 +1,60 @@
 import ProjectAccordion from "@/components/work/projects/ProjectAccordion";
-import { Stack } from "@mui/material";
+import { Link, Stack } from "@mui/material";
 
 export default function Projects() {
   return (
     <Stack spacing={2}>
+      {/*Figgie Bot */}
+      <ProjectAccordion
+        id="figgie-bot"
+        projectName="Figgie Bot"
+        githubLink="https://github.com/mtwind/figgie"
+        organization="Personal Project"
+        date="June 2025 – Present"
+        techStack={[
+          "/icons/Python.png",
+          "/icons/React.png",
+          "/icons/TypeScript.png",
+          "/icons/JavaScript.png",
+          "/icons/PostgreSQL.png",
+          "/icons/Vite.png",
+          "/icons/MaterialUI.png",
+          "/icons/Vercel.png",
+        ]}
+        description={
+          <ul>
+            <li>
+              Figgie is a trading and market making game developed by{" "}
+              <Link
+                href="https://www.janestreet.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: "#1976d2", textDecoration: "underline" }}
+              >
+                Jane Street
+              </Link>{" "}
+              to educate new traders.
+            </li>
+            <li>
+              This application will use advanced statistics and logic to create
+              a bot that will out think and out compute any opponent.
+            </li>
+            <li>
+              Try Figgie here:{" "}
+              <Link
+                href="https://www.figgie.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: "#1976d2", textDecoration: "underline" }}
+              >
+                Play
+              </Link>
+            </li>
+          </ul>
+        }
+        defaultExpanded={false}
+      />
+
       {/* Portfolio Website */}
       <ProjectAccordion
         id="project-portfolio-website"
